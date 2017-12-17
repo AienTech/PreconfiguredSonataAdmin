@@ -1,13 +1,184 @@
-<!DOCTYPE html>
-<html>
+{% spaceless %}
+    {% set route = app.request.attributes.get('_route') %}
+
+    <!DOCTYPE html>
+    <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no"/>
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/icon/apple-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/icon/apple-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/icon/apple-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/icon/apple-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('assets/icon/apple-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets/icon/apple-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/icon/apple-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/icon/apple-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/icon/apple-icon-180x180.png') }}">
+        <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('assets/icon/android-icon-192x192.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/icon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/icon/favicon-96x96.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/icon/favicon-16x16.png') }}">
+        <link rel="shortcut icon" href="{{ asset('assets/icon/favicon.ico') }}">
+        <link rel="manifest" href="{{ asset('assets/icon/manifest.json') }}">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="{{ asset('assets/icon/ms-icon-144x144.png') }}">
+        <meta name="theme-color" content="#ffffff">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+        <link href="{{ asset('assets/css/jquery-ui.structure.min.rtl.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/jquery-ui.min.rtl.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href="{{ asset('assets/css/style.rtl.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.rawgit.com/rastikerdar/vazir-font/v[X.Y.Z]/dist/font-face.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
+        <title>تابان پرواز آسیا {% block title %}{% endblock %}</title>
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body data-color="theme-1">
+
+    <header class="color-1 hovered menu-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav">
+                        <a href="{{ path('homepage') }}" class="logo">
+                            <img src="{{ asset('assets/img/logo-text.png') | imagine_filter('logo') }}" alt="آژانس مسافرتی تابان پرواز آسیا">
+                        </a>
+                        <div class="nav-menu-icon">
+                            <a href="#"><i></i></a>
+                        </div>
+                        <nav class="menu">
+                            <ul>
+                                <li class="type-1 {% if route == "homepage" %}active{% endif %}">
+                                    <a href="{{ path('homepage') }}">صفحه نخست</a>
+                                </li>
+                                <li class="type-1 {% if route == "blogPage" or route == "singlePostPage" %}active{% endif %}">
+                                    <a href="{{ path('blogPage') }}">وبلاگ</a>
+                                </li>
+
+                                <li class="type-1 {% if route == "hotelPage" or route == "singleHotelPage" %}active{% endif %}">
+                                    <a href="{{ path('hotelPage') }}">هتل‌ها</a>
+                                </li>
+
+                                <li class="type-1 {% if route == "toursPage" or route == "accommodationsPage" or route == "singleTourPage" or route == "singleAccommodationPage" %}active{% endif %}">
+                                    <a href="#">گردش و سفر</a>
+                                    <ul class="dropmenu">
+                                        <li><a href="{{ path('toursPage') }}">تورها</a></li>
+                                        <li><a href="{{ path('accommodationsPage') }}">اقامتگاه‌ها</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="type-1 {% if route == "aboutPage" %}active{% endif %}">
+                                    <a href="{{ path('aboutPage') }}">درباره‌ما</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    <!-- FOOTER -->
+    <footer class="bg-dark type-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-block">
+                        <img src="{{ asset('assets/img/logo.png') | imagine_filter('logo') }}" alt="آژانس مسافرتی تابان پرواز آسیا" class="logo-footer">
+                        <div class="f_text color-grey-7">
+                            آزانس مسافرتی تابان پرواز آسیا، با هدف ارائه خدماتی متمایز به مسافران در سال ۱۳۸۱ توسط جناب آقای مساح تاسیس گردید. این شرکت برگزار کننده مستقیم تورهای سیاحتی، زیارتی، فرهنگی، تفریحی و نمایشگاهی است.
+                        </div>
+                        <div class="footer-share">
+                            <a href="#"><span class="fa fa-facebook"></span></a>
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                            <a href="#"><span class="fa fa-google-plus"></span></a>
+                            <a href="#"><span class="fa fa-pinterest"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-sm-6 no-padding">
+                    <div class="footer-block">
+                        <h6>وبلاگ و اخبار</h6>
+                        {% for post in news.getRecentBlogPosts %}
+                            <div class="f_news clearfix">
+                                <a class="f_news-img black-hover" href="{{ path('singlePostPage', {'slug': post.slug}) }}">
+                                    <img class="img-responsive" src="{{ vich_uploader_asset(post, 'imageFile') | imagine_filter('thumbnail_small') }}" alt="{{ post.title }}">
+                                    <div class="tour-layer delay-1"></div>
+                                </a>
+                                <div class="f_news-content">
+                                    <a class="f_news-tilte color-white link-red" href="{{ path('singlePostPage', {'slug': post.slug}) }}">{{ post.title }}</a>
+                                    <span class="date-f">{{ post.updatedAt | jdate('jS F Y') }}</span>
+                                    <a href="{{ path('singlePostPage', {'slug': post.slug}) }}" class="r-more">مطالعه بیشتر</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-block">
+                        <h6>تگ‌ها</h6>
+                        <a href="#" class="tags-b">پروازها</a>
+                        <a href="#" class="tags-b">مسافرت</a>
+                        <a href="#" class="tags-b">فروش</a>
+                        <a href="#" class="tags-b">کشتی</a>
+                        <a href="#" class="tags-b">ماشین</a>
+                        <a href="#" class="tags-b">هتل ها</a>
+                        <a href="#" class="tags-b">تور ها</a>
+                        <a href="#" class="tags-b">رزرواسیون</a>
+                        <a href="#" class="tags-b">کشورها</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="footer-block">
+                        <h6>اطلاعات تماس</h6>
+                        <div class="contact-info">
+                            <div class="contact-line color-grey-3"><i class="fa fa-map-marker"></i><span> خیابان مطهری، بین امیراتابک و سهروردی، پلاک ۱۱۹، طبقه همکف</span></div>
+                            <div class="contact-line color-grey-3"><i class="fa fa-phone"></i><a dir="ltr" href="tel:+982188747700">{{ agency_phone_number }}</a></div>
+                            <div class="contact-line color-grey-3"><i class="fa fa-envelope-o"></i><a href="mailto:support@tpasia.net">{{ agency_info_email_address }}</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-link bg-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                        <span>&copy; {{ date('Y') | jdate('Y') }} تمامی حقوق متعلق به شرکت خدمات مسافرتی تابان پرواز آسیا است | برنامه‌نویسی شده توسط <a
+                                    href="http://www.saidi27.com" target="_blank">آیین سعیدی</a></span>
+                        </div>
+                        <ul>
+                            <li><a class="link-aqua" href="#">حریم خصوصی </a></li>
+                            <li><a class="link-aqua" href="{{ path('aboutPage') }}">درباره ما</a></li>
+                            <li><a class="link-aqua" href="#">پشتیبانی </a></li>
+                            <li><a class="link-aqua" href="#">سوالات متداول</a></li>
+                            <li><a class="link-aqua" href="#">وبلاگ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="{{ asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/idangerous.swiper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.viewportchecker.min.js') }}"></script>
+    <script src="{{ asset('assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.mousewheel.min.js') }}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="{{ asset('assets/js/aos.js') }}"></script>
+    <script src="{{ asset('assets/js/map.js') }}"></script>
+    <script src="{{ asset('assets/js/all.js') }}"></script>
+    <script>AOS.init();</script>
     </body>
-</html>
+    </html>
+{% endspaceless %}

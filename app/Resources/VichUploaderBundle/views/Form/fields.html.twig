@@ -1,0 +1,65 @@
+{% block vich_file_widget %}
+    {% spaceless %}
+        <div class="vich-file">
+            {{ form_row(form.file) }}
+            {% if form.delete is defined %}
+                {{ form_row(form.delete) }}
+            {% endif %}
+
+            {% if download_uri is defined and download_uri %}
+                <a href="{{ download_uri }}">{{ 'download'|trans({}, 'VichUploaderBundle') }}</a>
+            {% endif %}
+        </div>
+    {% endspaceless %}
+{% endblock %}
+
+{% block vich_image_widget %}
+    {% spaceless %}
+        <div class="vich-image">
+            <div class="row">
+                {% if download_uri is defined and download_uri %}
+                    <div class="col-xs-12">
+                        <img class="img-thumbnail" src="{{ download_uri | imagine_filter('resize_very_small') }}" alt="" />
+                        {% if show_download_link %}
+                            <a class="btn btn-primary btn-xs" target="_blank" href="{{ download_uri }}">دانلود عکس</a>
+                        {% endif %}
+                        <hr>
+                    </div>
+                {% endif %}
+                <div class="col-xs-12">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <button id="file-button-browse" type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-file"></span>
+                            </button>
+                        </div>
+                        <div hidden>{{ form_widget(form.file, {'id': 'input-upload'}) }}</div>
+                        <input type="text" id="file-input-name" disabled="disabled" placeholder="فایل جدیدی انتخاب نشده است" class="form-control">
+                    </div>
+                    <script type="text/javascript">
+			            document.getElementById('file-button-browse').addEventListener('click', function() {
+				            document.getElementById('input-upload').click();
+			            });
+
+			            document.getElementById('input-upload').addEventListener('change', function() {
+				            var fullPath = this.value;
+				            if (fullPath) {
+					            var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+					            var filename = fullPath.substring(startIndex);
+					            if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+						            filename = filename.substring(1);
+						            document.getElementById('file-input-name').value = filename
+					            }
+				            }
+				            //document.getElementById('file-input-name').value = this.value;
+			            });
+                    </script>
+
+                    {% if form.delete is defined %}
+                        {{ form_row(form.delete) }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock %}

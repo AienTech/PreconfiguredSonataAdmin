@@ -2,7 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: system.yml }
+    - { resource: sonata.yml }
+    - { resource: liip.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -11,7 +12,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.root_dir%/config/routing.yml'
@@ -35,8 +36,46 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'SonataFormatterBundle:Form:formatter.html.twig'
+        - 'LexikFormFilterBundle:Form:form_div_layout.html.twig'
+    globals:
+        sonata_custom:
+            assets:
+                stylesheets_rtl:
+                    - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
+                    - bundles/sonatacore/vendor/components-font-awesome/css/font-awesome.min.css
+                    - bundles/sonatacore/vendor/ionicons/css/ionicons.min.css
+                    - bundles/sonataadmin/vendor/admin-lte/dist/css/skins/skin-black.min.css
+                    - bundles/sonataadmin/vendor/iCheck/skins/square/blue.css
+                    - bundles/sonatacore/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css
+                    - bundles/sonataadmin/vendor/jqueryui/themes/base/jquery-ui.css
+                    - bundles/sonatacore/vendor/select2/select2.css
+                    - bundles/sonatacore/vendor/select2-bootstrap-css/select2-bootstrap.min.css
+                    - bundles/sonataadmin/vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css
+                    - bundles/sonataadmin/css/styles.css
+                    - bundles/sonataadmin/css/layout.css
+                    - bundles/sonataadmin/css/tree.css
+                    - //cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css
+                    - assets/css/admin-rtl.css
+                    - assets/css/admin-skin-black.min.rtl.css
+                    - assets/css/admin-styles.rtl.css
+                    - assets/css/admin-layout.rtl.css
+                    - assets/css/admin-tree.rtl.css
+                    - assets/css/admin-custom.rtl.css
+                    - https://cdn.rawgit.com/rastikerdar/samim-font/v2.0.1/dist/font-face.css
 
-# Doctrine Configuration
+assetic:
+    debug:          '%kernel.debug%'
+    bundles:
+        - FrameworkBundle
+        - SecurityBundle
+        - TwigBundle
+        - MonologBundle
+        - SwiftmailerBundle
+        - AsseticBundle
+        - AppBundle
+
 doctrine:
     dbal:
         driver: pdo_mysql
@@ -46,22 +85,66 @@ doctrine:
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: '%kernel.root_dir%/data/data.db3'
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #path: '%database_path%'
-
+        types:
+            json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
+fos_user:
+    db_driver:      orm # can be orm or odm
+    firewall_name:  main
+    user_class:     Application\Sonata\UserBundle\Entity\User
+
+
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
 swiftmailer:
     transport: '%mailer_transport%'
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+ivory_ck_editor:
+    configs:
+        default:
+            toolbar: full
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+        sort_field_name: sort
+        sort_direction_name: direction
+        distinct: true
+        filter_field_name: filterField
+        filter_value_name: filterValue
+    template:
+        pagination: '@KnpPaginator/Pagination/custom.html.twig'
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'
+        filtration: '@KnpPaginator/Pagination/filtration.html.twig'
+
+lexik_form_filter:
+    listeners:
+        doctrine_orm: true
+        doctrine_dbal: false
+        doctrine_mongodb: false
+    condition_pattern: text.contains
+
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        post_category:
+            uri_prefix:         /uploads/images/post_category
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/post_category'
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

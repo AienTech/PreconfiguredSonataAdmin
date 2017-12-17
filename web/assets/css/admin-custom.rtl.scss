@@ -1,0 +1,39 @@
+aside.main-sidebar {
+  direction: rtl;
+}
+
+li.treeview ul li a i.fa {
+   float: left;
+ }
+
+
+section.content-header div.navbar-header {
+  min-width: 50%;
+
+  a {
+    width: 100%;
+  }
+}
+
+body, h1, h2, h3, h4, h5, h6, .logo, .logo * {
+  font-family: 'Samim', sans-serif;
+}
+
+a.select2-search-choice-close {
+  left: 3px !important;
+  right: auto !important;
+}
+
+.select2-result-label {
+  text-align: right;
+  direction: rtl;
+}
+
+li.select2-search-choice {
+  float: right !important;
+  margin-right: 5px !important;
+}
+
+input.select2-input {
+  text-align: right;
+}

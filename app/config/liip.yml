@@ -1,0 +1,49 @@
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+    filter_sets:
+        cache: ~
+        logo:
+            quality: 75
+            filters:
+                relative_resize: { heighten: 48 }
+        thumbnail_small:
+            quality: 75
+            filters:
+                thumbnail: { size: [120, 120], mode: outbound }
+
+        thumbnail_medium:
+            quality: 75
+            filters:
+                thumbnail: { size: [280, 280], mode: outbound }
+
+        thumbnail_big:
+            quality: 90
+            filters:
+                thumbnail: { size: [420, 420], mode: outbound }
+
+        resize_very_small:
+            quality: 80
+            filters:
+                relative_resize: { heighten: 120 }
+
+        resize_small:
+            quality: 80
+            filters:
+                relative_resize: { heighten: 380 }
+
+        resize_medium:
+            quality: 80
+            filters:
+                relative_resize: { heighten: 680 }
+
+        resize_big:
+            quality: 80
+            filters:
+                relative_resize: { heighten: 800 }
+
+        resize_very_big:
+            quality: 80
+            filters:
+                relative_resize: { heighten: 1080 }

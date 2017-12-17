@@ -1,0 +1,120 @@
+Posts: پست‌ها
+Countries: کشورها
+Cities: شهرها
+Nearby places: مکان‌های نزدیک
+Hotels name and rate: نام هتل‌ها
+Hotels: هتل‌ها
+Services: خدمات
+Accommodation types: انواع اقامتگاه
+Accommodations: اقامتگاه‌ها
+Tour categories: دسته‌بندی تورها
+Travel types: انواع سفرها
+Travel logistics: تدارکات سفرها
+Tours: تورها
+
+Title: عنوان
+Intro: خلاصه و شرح
+Created At: ساخته شده در
+Updated At: بروزرسانی شده در
+Action: عملیات
+Text: متن
+Post List: لیست پست‌ها
+Post Create: ساخت پست
+Post Delete: حذف پست
+Category: دسته‌بندی
+
+Name: نام
+Country List: لیست کشورها
+Country Create: ساخت کشور
+Country Delete: حذف کشور
+
+Description: شرح
+Country: کشور
+City List: لیست شهرها
+City Create: ساخت شهر
+City Delete: حذف شهر
+
+Nearby Place List: لیست مکان‌های نزدیک
+Nearby Place Create: ساخت مکان نزدیک
+Nearby Place Delete: حذف مکان نزدیک
+
+Rate: رتبه (ستاره)
+Link: لینک (آدرس سایت)
+Hotel Name And Rate List: لیست نام‌ها و ستاره‌های هتل‌ها
+Hotel Name And Rate Create: ساخت نام و رتبه
+Hotel Name And Rate Delete: حذف نام و رتبه
+
+Single Bed Price: قیمت تخت یک‌نفره
+Extra Night Price: قیمت هر شب اضافه
+Child Without Bed Price: قیمت کودک بدون تخت
+Is Top: برتر است
+Currency Type: نوع ارز
+Double Bed Price: قیمت دو تخت
+Triple Bed Price: قیمت سه تخت
+Extra Bed Price: قیمت تخت اضافه
+Child With Bed Price: قیمت کودک به همراه تخت
+Hotel List: لیست هتل‌ها
+Hotel Create: ساخت هتل
+Hotel Delete: حذف هتل
+General: عمومی
+Nearby Places: مکان‌های نزدیک
+Pricing: قیمت‌گذاری
+
+Service List: لیست خدمات
+Service Create: ساخت سرویس
+Service Delete: حذف سرویس
+
+Accommodation Type List: لیست انواع اقامتگاه
+Accommodation Type Create: ساخت نوع اقامتگاه
+Accommodation Type Delete: حذف نوع اقامتگاه
+
+Names: نام‌ها
+City: شهر
+Accommodation Type: نوع اقامتگاه
+Note: یادداشت
+Accommodation List: لیست اقامتگاه‌ها
+Accommodation Create: ساخت اقامتگاه
+Accommodation Delete: حذف اقامتگاه
+
+Tour Category List: لیست دسته‌بندی تورها
+Tour Category Create: ساخت دسته‌بندی
+Tour Category Delete: حذف دسته‌بندی
+
+Travel Type List: لیست نوع سفرها
+Travel Type Create: ساخت نوع سفر
+Travel Type Delete: حذف نوع سفر
+
+Type: نوع
+Travel Logistic List: لیست تدارکات سفرها
+Travel Logistic Create: ساخت تدارکات
+Travel Logistic Delete: حذف تدارکات
+
+Staying Duration: مدت اقامت
+Start Date: تاریخ شروع
+Attendant Phone Number: شماره موبایل مسئول تور
+Attendant Land Number: شماره تلفن مسئول تور
+Attendant Email Address: آدرس ایمیل مسئول تور
+Is Expired: منقضی شده است
+Mandatory Documents: مدارک اجباری
+Agency Services: خدمات آژانس
+Notes: یادداشتها
+Tour List: لیست تورها
+Tour Create: ساخت تور
+Tour Delete: حذف تور
+Attendant Information: اطلاعات مسئول
+Notes, Documents and Services: یادداشتها، مدارک و خدمات
+Travel Information: اطلاعات سفر
+Categories: دسته‌بندی‌ها
+Travel Logistic: تدارکات سفر
+Traveling Cities: شهر‌های مقصد
+Travel From: شهر مبدا
+
+Post categories: دسته‌بندی پست‌ها
+Post Category List: لیست دسته‌بندی پست‌ها
+Post Category Create: ساخت دسته‌بندی
+Post Category List: حذف دسته‌بندی
+
+Image File: فایل عکس
+
+Current Price: قیمت فعلی
+About Hotel: درباره هتل

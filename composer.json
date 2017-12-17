@@ -1,10 +1,10 @@
 {
-    "name": "aien/.checkout",
+    "name": "aien/taban-parvaz",
     "license": "proprietary",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "AppBundle\\": "src/AppBundle"
+            "": "src/"
         },
         "classmap": [
             "app/AppKernel.php",
@@ -19,17 +19,29 @@
     "require": {
         "php": ">=5.3.9",
         "doctrine/doctrine-bundle": "~1.4",
+        "doctrine/doctrine-orm-module": "^1.1",
         "doctrine/orm": "^2.4.8",
-        "friendsofsymfony/user-bundle": "~2.0",
+        "egeloen/ckeditor-bundle": "^5.0",
+        "friendsofsymfony/rest-bundle": "^2.2",
         "incenteev/composer-parameter-handler": "~2.0",
+        "knplabs/knp-markdown-bundle": "^1.5",
+        "knplabs/knp-paginator-bundle": "^2.6",
+        "lexik/form-filter-bundle": "^5.0",
+        "liip/imagine-bundle": "^1.9",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
-        "sonata-project/admin-bundle": "^3.28",
-        "sonata-project/doctrine-orm-admin-bundle": "^3.2",
+        "sonata-project/admin-bundle": "^3.24",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "sonata-project/formatter-bundle": "^3.3",
+        "sonata-project/user-bundle": "^3.5",
+        "symfony/assetic-bundle": "^2.8",
         "symfony/monolog-bundle": "^3.0.2",
         "symfony/swiftmailer-bundle": "~2.3,>=2.3.10",
         "symfony/symfony": "2.8.*",
-        "twig/twig": "^1.0||^2.0"
+        "symfony_persia/symfonyjdate": "^1.1",
+        "twig/extensions": "^1.5",
+        "twig/twig": "^1.0||^2.0",
+        "vich/uploader-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -40,6 +52,7 @@
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Ivory\\CKEditorBundle\\Composer\\CKEditorScriptHandler::install",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
@@ -53,7 +66,10 @@
     },
     "config": {
         "bin-dir": "bin",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform" : {
+            "php": "7.1.11"
+        }
     },
     "extra": {
         "symfony-app-dir": "app",

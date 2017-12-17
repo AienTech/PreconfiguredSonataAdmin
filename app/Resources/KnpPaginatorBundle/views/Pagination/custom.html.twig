@@ -1,0 +1,20 @@
+{% if pageCount > 1 %}
+    <div class="c_pagination clearfix">
+        {% if previous is defined %}
+            <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fl">صفحه قبل</a>
+        {% endif %}
+
+        {% if next is defined %}
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" class="c-button b-40 bg-dr-blue-2 hv-dr-blue-2-o fr">صفحه بعد</a>
+        {% endif %}
+        <ul class="cp_content color-3">
+            {% for page in pagesInRange %}
+                {% if page != current %}
+                    <li><a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page | localizednumber('decimal') }}</a></li>
+                {% else %}
+                    <li class="active"><a href="#">{{ page | localizednumber('decimal') }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
