@@ -1,5 +1,7 @@
 {% extends 'knp_menu.html.twig' %}
 
+{% set _is_rtl = app.request.getLocale() in ['ar', 'arc', 'bcc', 'bqi', 'ckb', 'dv', 'fa', 'glk', 'he', 'ku', 'mzn', 'pnb', 'ps', 'sd', 'ug', 'ur', 'yi'] %}
+
 {% block root %}
     {%- set listAttributes = item.childrenAttributes|merge({'class': 'sidebar-menu'}) %}
     {%- set request        = item.extra('request') ?: app.request %}
@@ -27,7 +29,7 @@
     {% spaceless %}
         {% set translation_domain = item.extra('label_catalogue', 'messages') %}
         {% if item.extra('on_top') is defined and not item.extra('on_top') %}
-            {% set icon = item.extra('icon')|default(item.level > 1 ? '<i class="fa fa-angle-double-left" aria-hidden="true"></i>' : '') %}
+            {% set icon = item.extra('icon')|default(item.level > 1 ? _is_rtl ? '<i class="fa fa-angle-double-left" aria-hidden="true"></i>' : '<i class="fa fa-angle-double-right" aria-hidden="true"></i>' : '') %}
         {% else %}
             {% set icon = item.extra('icon') %}
         {% endif %}
@@ -44,7 +46,7 @@
             {{ icon|raw }}
             {{ parent() }}
             {%- if item.extra('keep_open') is not defined or not item.extra('keep_open') -%}
-                <span class="pull-left-container"><i class="fa pull-left fa-angle-right"></i></span>
+                <span class="pull-left-container"><i class="fa pull-left fa-angle-{% if _is_rtl %}left{% else %}right{% endif %}"></i> </span>
             {%- endif -%}
         </a>
     {% endspaceless %}

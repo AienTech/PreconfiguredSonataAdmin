@@ -57,18 +57,18 @@ file that was distributed with this source code.
             <link rel="stylesheet" href="{{ asset(stylesheet) }}">
         {% endfor %}
     {% endblock %}
-
     <style>
         .admin-logo img {
-        width: 64px !important;
-        display: block;
-        margin: 0 auto;
-        text-align: center; }
-        
-        .admin-logo span {
-        text-align: center !important; }
-    </style>
+            width: 64px !important;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
 
+        .admin-logo span {
+            text-align: center !important;
+        }
+    </style>
     {% block javascripts %}
     {% block sonata_javascript_config %}
         <script>
@@ -178,7 +178,7 @@ file that was distributed with this source code.
                         <span class="sr-only">Toggle navigation</span>
                     </a>
 
-                    <div class="navbar-right">
+                    <div class="navbar-{{ _is_rtl ? 'right' : 'left' }}">
                         {% block sonata_breadcrumb %}
                             <div class="hidden-xs">
                                 {% if _breadcrumb is not empty or action is defined %}
@@ -277,9 +277,9 @@ file that was distributed with this source code.
                         {% block side_bar_after_nav %}
                             <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 10px">
                                 {% block side_bar_after_nav_content %}
-                                    <a href="http://www.saidi27.com" rel="noreferrer" class="admin-logo" target="_blank">
-                                        <img width="64" src="{{ asset('assets/img/logo.png') }}" alt="Saidi27">
-                                        <span>Proudly made by Saidi27</span>
+                                    <a href="http://www.SwanStudio.ca" rel="noreferrer" class="admin-logo" target="_blank">
+                                        <img width="64" src="{{ asset('assets/img/swan-dark.png') | imagine_filter("thumbnail_small") }}" alt="SwanStudio">
+                                        <span>Proudly made by SwanStudio</span>
                                     </a>
                                 {% endblock %}
                             </p>
