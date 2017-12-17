@@ -57,6 +57,17 @@ file that was distributed with this source code.
             <link rel="stylesheet" href="{{ asset(stylesheet) }}">
         {% endfor %}
     {% endblock %}
+
+<style>
+.admin-logo img {
+  width: 64px !important;
+  display: block;
+  margin: 0 auto;
+  text-align: center; }
+.admin-logo span {
+  text-align: center !important; }
+</style>
+
     {% block javascripts %}
     {% block sonata_javascript_config %}
         <script>
