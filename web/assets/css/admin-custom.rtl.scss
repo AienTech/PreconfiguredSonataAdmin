@@ -37,3 +37,15 @@ li.select2-search-choice {
 input.select2-input {
   text-align: right;
 }
+
+.admin-logo {
+  img {
+    width: 64px !important;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  span {
+    text-align: center !important;
+  }
+}
